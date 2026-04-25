@@ -12,3 +12,4 @@ private_key.pem
 public_key.pem
 config.json
 *env
+.DS_Store
