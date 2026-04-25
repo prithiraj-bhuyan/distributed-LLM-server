@@ -1,0 +1,10 @@
+[
+  {
+    "replicas": "1",
+    "readinessProbeCheck": "/healthcheck",
+    "startupProbeCheck": "/healthcheck"
+  },
+  {
+    "failures": "0"
+  }
+]

@@ -1,0 +1,36 @@
+[project]
+name = "grpc-p4"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Prithiraj Bhuyan",email = "pbhuyan@andrew.cmu.edu"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "grpcio (>=1.76.0,<2.0.0)",
+    "grpcio-tools (>=1.76.0,<2.0.0)",
+    "llama-cpp-python (>=0.3.16,<0.4.0)",
+    "asyncio (>=4.0.0,<5.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "grpc_p4", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "types-protobuf (>=6.32.1.20251210,<7.0.0.0)",
+    "grpc-stubs (>=1.53.0.6,<2.0.0.0)",
+    "mypy (>=1.19.1,<2.0.0)"
+]
+[tool.mypy]
+strict = true
+untyped_calls_exclude = "llmproto"
+
+[[tool.mypy.overrides]]
+module = "llmproto.v1.*"
+ignore_errors = true

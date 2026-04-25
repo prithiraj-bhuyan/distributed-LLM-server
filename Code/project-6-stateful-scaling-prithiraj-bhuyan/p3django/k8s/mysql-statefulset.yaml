@@ -1,0 +1,117 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  serviceName: mysql
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      initContainers:
+      - name: init-mysql
+        image: mysql:8.0
+        command:
+        - bash
+        - "-c"
+        - |
+          set -ex
+          # Generate server-id based on ordinal index
+          [[ $HOSTNAME =~ -([0-9]+)$ ]] || exit 1
+          ordinal=${BASH_REMATCH[1]}
+          # Only the first pod (ordinal 0) is master
+          if [[ $ordinal -eq 0 ]]; then
+            cp /mnt/config-map/master.cnf /etc/mysql/conf.d/
+          else
+            # Update server-id for slaves
+            cp /mnt/config-map/slave.cnf /etc/mysql/conf.d/
+            sed -i "s/server-id=2/server-id=$((ordinal + 1))/" /etc/mysql/conf.d/slave.cnf
+          fi
+        volumeMounts:
+        - name: conf
+          mountPath: /etc/mysql/conf.d
+        - name: config-map
+          mountPath: /mnt/config-map
+      containers:
+      - name: mysql
+        image: mysql:8.0
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "rootpassword"
+        ports:
+        - name: mysql
+          containerPort: 3306
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/mysql
+        - name: conf
+          mountPath: /etc/mysql/conf.d
+        - name: config-map
+          mountPath: /mnt/config-map
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+        livenessProbe:
+          exec:
+            command: ["mysqladmin", "ping", "-u", "root", "-prootpassword"]
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          exec:
+            command: ["mysql", "-u", "root", "-prootpassword", "-e", "SELECT 1"]
+          initialDelaySeconds: 5
+          periodSeconds: 2
+          timeoutSeconds: 1
+      - name: replication-init
+        image: mysql:8.0
+        command:
+        - bash
+        - "-c"
+        - |
+          set -ex
+          # Wait for MySQL to be ready
+          until mysqladmin ping -h 127.0.0.1 -u root -p${MYSQL_ROOT_PASSWORD}; do
+            echo "Waiting for MySQL to be ready..."
+            sleep 2
+          done
+          # Determine if master or slave based on hostname
+          [[ $HOSTNAME =~ -([0-9]+)$ ]] || exit 1
+          ordinal=${BASH_REMATCH[1]}
+          if [[ $ordinal -eq 0 ]]; then
+            echo "Initializing master..."
+            # Execute the script content instead of trying to run the file
+            bash -c "$(cat /mnt/config-map/init-master.sh)"
+          else
+            echo "Initializing slave..."
+            # Execute the script content instead of trying to run the file
+            bash -c "$(cat /mnt/config-map/init-slave.sh)"
+          fi
+          # Keep container running
+          tail -f /dev/null
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "rootpassword"
+        volumeMounts:
+        - name: config-map
+          mountPath: /mnt/config-map
+      volumes:
+      - name: conf
+        emptyDir: {}
+      - name: config-map
+        configMap:
+          name: mysql-config
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 10Gi

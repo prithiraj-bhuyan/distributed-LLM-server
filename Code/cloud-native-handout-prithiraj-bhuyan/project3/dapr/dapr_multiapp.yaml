@@ -1,0 +1,21 @@
+version: 1
+common:
+  resourcesPath: ./dapr-components
+  daprdLogDestination: fileAndConsole
+  appLogDestination: fileAndConsole
+apps:
+  - appID: llmmaster
+    appDirPath: ./master  # Ensure the path to the project folder is correct
+    appPort: 8001
+    daprHTTPPort: 3510
+    logLevel: warn
+    # Added --app-dir src so uvicorn finds your code
+    command: ["poetry", "run", "uvicorn", "master.master_st4:app", "--host", "0.0.0.0", "--port", "8001", "--app-dir", "src"]
+    
+  - appID: llmworker
+    appDirPath: ./worker
+    appPort: 8002
+    daprHTTPPort: 3511
+    logLevel: warn
+    # Ensure this filename matches exactly what is in worker/src/worker/
+    command: ["poetry", "run", "uvicorn", "worker.worker_simple_st4:app", "--host", "0.0.0.0", "--port", "8002", "--app-dir", "src"]

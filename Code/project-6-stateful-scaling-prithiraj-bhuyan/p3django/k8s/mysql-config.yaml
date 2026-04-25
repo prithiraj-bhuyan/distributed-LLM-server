@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+data:
+  master.cnf: |
+    [mysqld]
+    log-bin=mysql-bin
+    binlog-format=ROW
+    server-id=1
+  slave.cnf: |
+    [mysqld]
+    server-id=2
+  init-master.sh: |
+    #!/bin/bash
+    set -ex
+    echo "Creating replication user..."
+    mysql -h 127.0.0.1 -u root -p${MYSQL_ROOT_PASSWORD} <<EOF
+    CREATE USER IF NOT EXISTS 'replication'@'%' IDENTIFIED WITH mysql_native_password BY 'repl_password';
+    GRANT REPLICATION SLAVE ON *.* TO 'replication'@'%';
+    FLUSH PRIVILEGES;
+    EOF
+  init-slave.sh: |
+    #!/bin/bash
+    set -ex
+    echo "Waiting for master to be ready..."
+    until mysql -h 127.0.0.1 -h mysql-0.mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "SELECT 1"; do
+      echo "Master is not ready yet..."
+      sleep 3
+    done
+    echo "Getting master position..."
+    MASTER_STATUS=$(mysql -h mysql-0.mysql -u root -p${MYSQL_ROOT_PASSWORD} -e "SHOW MASTER STATUS" --skip-column-names)
+    MASTER_LOG_FILE=$(echo $MASTER_STATUS | cut -f 1 -d ' ')
+    MASTER_LOG_POS=$(echo $MASTER_STATUS | cut -f 2 -d ' ')
+    echo "Stopping replica IO thread if running..."
+    mysql -h 127.0.0.1 -u root -p${MYSQL_ROOT_PASSWORD} -e "STOP REPLICA IO_THREAD FOR CHANNEL '';"
+    echo "Setting up slave with master log file: $MASTER_LOG_FILE and position: $MASTER_LOG_POS"
+    mysql -h 127.0.0.1 -u root -p${MYSQL_ROOT_PASSWORD} <<EOF
+    CHANGE MASTER TO
+    MASTER_HOST='mysql-0.mysql',
+    MASTER_USER='replication',
+    MASTER_PASSWORD='repl_password',
+    MASTER_LOG_FILE='$MASTER_LOG_FILE',
+    MASTER_LOG_POS=$MASTER_LOG_POS;
+    START SLAVE;
+    EOF
+    mysql -h 127.0.0.1 -u root -p${MYSQL_ROOT_PASSWORD} <<EOF
+    SET GLOBAL super_read_only = 1
+    EOF
+    echo "Slave setup complete!"

@@ -1,0 +1,20 @@
+== APP - llmworker == INFO:     Started server process [85797]
+== APP - llmworker == INFO:     Waiting for application startup.
+== APP - llmworker == ERROR:    Traceback (most recent call last):
+== APP - llmworker ==   File "/home/azureuser/.cache/pypoetry/virtualenvs/worker-eGZLudBv-py3.12/lib/python3.12/site-packages/starlette/routing.py", line 694, in lifespan
+== APP - llmworker ==     async with self.lifespan_context(app) as maybe_state:
+== APP - llmworker ==   File "/usr/lib/python3.12/contextlib.py", line 210, in __aenter__
+== APP - llmworker ==     return await anext(self.gen)
+== APP - llmworker ==            ^^^^^^^^^^^^^^^^^^^^^
+== APP - llmworker ==   File "/home/azureuser/cloud-native-handout-prithiraj-bhuyan/project3/dapr/worker/src/worker/worker_simple_st4.py", line 22, in lifespan
+== APP - llmworker ==     LLM_MODEL = Llama(
+== APP - llmworker ==                 ^^^^^^
+== APP - llmworker ==   File "/home/azureuser/.cache/pypoetry/virtualenvs/worker-eGZLudBv-py3.12/lib/python3.12/site-packages/llama_cpp/llama.py", line 370, in __init__
+== APP - llmworker ==     raise ValueError(f"Model path does not exist: {model_path}")
+== APP - llmworker == ValueError: Model path does not exist: ../../llm_server/tinyllama-1.1b-chat-v1.0.Q2_K.gguf
+== APP - llmworker == 
+== APP - llmworker == ERROR:    Application startup failed. Exiting.
+The App process exited with error code: exit status 3
+
+termination signal received: shutting down
+Error exiting App: exit status 3

@@ -1,0 +1,5 @@
+[lint]
+select = ["F", "D", "S", "RET",  "EM", "T", "EM", "FA"]
+ignore = ["S101"]
+[lint.pydocstyle]
+convention = "google"

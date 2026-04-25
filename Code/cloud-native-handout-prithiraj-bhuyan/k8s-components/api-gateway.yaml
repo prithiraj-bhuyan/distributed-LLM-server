@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: krakend-deploy
+  labels:
+    application: apigateway
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      application: apigateway
+  template:
+    metadata:
+      labels:
+        application: apigateway
+    spec:
+      automountServiceAccountToken: false
+      volumes:
+        - name: krakend-cfg
+          configMap:
+            name: krakend-cfg
+        # 1. Define the JWKS Secret Volume
+        - name: jwks-volume
+          secret:
+            secretName: krakend-jwks
+      containers:
+        - name: application
+          resources:
+            requests:
+              memory: '64Mi'
+              cpu: '100m'
+            limits:
+              memory: '1024Mi'
+              cpu: '1000m'
+          image: krakend:2.12.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+          - name: krakend-cfg
+            mountPath: /etc/krakend
+          # 2. Mount the publickey.json file to the required path
+          - name: jwks-volume
+            mountPath: /etc/krakensecrets/publickey.json
+            subPath: publickey.json
+            readOnly: true

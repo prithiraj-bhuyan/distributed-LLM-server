@@ -1,0 +1,72 @@
+syntax = "proto3";
+package llmproto.v1;
+
+import "google/protobuf/timestamp.proto";
+
+// LLMService defines the gRPC service for language model completions.
+service LLMService {
+    // Completion generates a completion based on the provided request.
+    rpc Completion (CompletionRequest) returns (CompletionResponse);
+    // LLMStream generates a streaming completion based on the provided request.
+    rpc LLMStream (LLMStreamRequest) returns (stream LLMStreamResponse);
+}
+// CompletionRequest represents a request for generating a completion.
+message CompletionRequest {
+    // The message to use for completion.
+    string message = 1;
+}
+
+// LLMStreamResponse represents a single response in a streaming completion.
+message LLMStreamRequest {
+    // The message to use for streaming completion.
+    string message = 1;
+}
+
+// CompletionResponse represents the response from a completion request.
+message CompletionResponse {
+    // Unique identifier for the completion.
+    string id = 1;
+    // The type of object returned.
+    string object = 2;
+    // Timestamp when the completion was created.
+    google.protobuf.Timestamp created = 3;
+    // The model used for generating the completion.
+    string model = 4;
+    // Usage statistics for the completion.
+    Usage usage = 5;
+    // The generated choices for the completion.
+    repeated Choice choices = 6;
+}
+// LLMStreamResponse represents a single response in a streaming completion.
+message LLMStreamResponse {
+    // Unique identifier for the completion.
+    string id = 1;
+    // The type of object returned.
+    string object = 2;
+    // Timestamp when the completion was created.
+    google.protobuf.Timestamp created = 3;
+    // The model used for generating the completion.
+    string model = 4;
+    // The generated choices for the completion.
+    repeated Choice choices = 5;
+}
+// Usage represents token usage statistics.
+message Usage {
+    // Number of tokens in the prompt.
+    int32 prompt_tokens = 1;
+    // Number of tokens in the completion.
+    int32 completion_tokens = 2;
+    // Total number of tokens used.
+    int32 total_tokens = 3;
+}
+// Choice represents a single generated choice in the completion response.
+message Choice {
+    // The generated text for the choice.
+    string text = 1;
+    // The index of the choice.
+    int32 index = 2;
+    // Log probabilities associated with the choice.
+    string logprobs = 3;
+    // Reason for finishing the generation.
+    string finish_reason = 4;
+}

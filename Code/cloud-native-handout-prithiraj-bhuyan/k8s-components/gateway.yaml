@@ -1,0 +1,30 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: my-gateway
+  namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  gatewayClassName: nginx 
+  listeners:
+  # - name: http
+  #   protocol: HTTP
+  #   port: 80
+  #   hostname: qwerty.servequake.com
+  #   allowedRoutes:
+  #     namespaces:
+  #       from: Same
+  - name: https-listener
+    port: 443
+    protocol: HTTPS
+    hostname: qwerty.servequake.com
+    allowedRoutes:
+      namespaces:
+        from: Same
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - kind: Secret
+        group: ""
+        name: listener-tls-secret

@@ -1,0 +1,23 @@
+[project]
+name = "master"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Prithiraj Bhuyan",email = "pbhuyan@andrew.cmu.edu"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi (>=0.128.0,<0.129.0)",
+    "uvicorn (>=0.40.0,<0.41.0)",
+    "gunicorn (>=23.0.0,<24.0.0)",
+    "dapr (>=1.16.0,<2.0.0)",
+    "dapr-ext-fastapi (>=1.16.0,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "master", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

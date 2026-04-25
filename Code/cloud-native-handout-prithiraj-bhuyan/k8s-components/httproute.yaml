@@ -1,0 +1,22 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: llm-app-route
+  namespace: default
+spec:
+  parentRefs:
+  - name: my-gateway
+    sectionName: https-listener
+  hostnames:
+  - "qwerty.servequake.com"
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /v1/llm
+    - path:
+        type: PathPrefix
+        value: /v1/logintoken
+    backendRefs:
+    - name: apigateway 
+      port: 8080

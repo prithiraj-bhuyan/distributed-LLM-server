@@ -1,0 +1,30 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: p5ci-
+spec:
+  pipelineRef:
+    name: p5ci
+  podTemplate:
+    securityContext:
+      fsGroup: 65532
+  workspaces:
+  - name: shared-data
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 3Gi
+  - name: git-credentials
+    secret:
+      secretName: git-credentials
+  - name: docker-credentials
+    secret:
+      secretName: docker-credentials
+  params:
+  - name: repo-url
+    value: git@github.com:SAIL-Classroom/cloud-native-handout-prithiraj-bhuyan.git
+  - name: image-reference
+    value: cloudnativeacr.azurecr.io

@@ -1,0 +1,8 @@
+version: v1
+lint:
+        use:
+                - STANDARD
+                - COMMENT_MESSAGE
+                - COMMENT_RPC
+                - COMMENT_SERVICE
+                - COMMENT_FIELD

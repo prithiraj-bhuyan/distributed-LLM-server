@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: llm-service
+  namespace: default
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - ext-host-gwy
+  http:
+    - match:
+        - uri:
+            prefix: /v1/llm
+      rewrite:
+        uri: /api
+      route:
+        - destination:
+            host: llmapp-service
+            port:
+              number: 80

@@ -1,0 +1,31 @@
+Count,Message,Traceback,Nodes
+1280,Invalid URL 'http:///api/token/': No host supplied,"  File ""/home/pbhuyan/Project 6/project-6-stateful-scaling-prithiraj-bhuyan/myenv/lib/python3.12/site-packages/locust/user/task.py"", line 363, in run
+    self.execute_next_task()
+  File ""/home/pbhuyan/Project 6/project-6-stateful-scaling-prithiraj-bhuyan/myenv/lib/python3.12/site-packages/locust/user/task.py"", line 396, in execute_next_task
+    self.execute_task(self._task_queue.popleft())
+  File ""/home/pbhuyan/Project 6/project-6-stateful-scaling-prithiraj-bhuyan/myenv/lib/python3.12/site-packages/locust/user/task.py"", line 513, in execute_task
+    task(self.user)
+  File ""/home/pbhuyan/Project 6/project-6-stateful-scaling-prithiraj-bhuyan/t2-locust/locustfile.py"", line 9, in hello_world
+    self.client.post(""/api/token/"", data_dict)
+  File ""/home/pbhuyan/Project 6/project-6-stateful-scaling-prithiraj-bhuyan/myenv/lib/python3.12/site-packages/locust/clients.py"", line 302, in post
+    return self.request(""POST"", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/pbhuyan/Project 6/project-6-stateful-scaling-prithiraj-bhuyan/myenv/lib/python3.12/site-packages/locust/clients.py"", line 203, in request
+    response = self._send_request_safe_mode(method, complete_url, data=data, json=json, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/pbhuyan/Project 6/project-6-stateful-scaling-prithiraj-bhuyan/myenv/lib/python3.12/site-packages/locust/clients.py"", line 250, in _send_request_safe_mode
+    return super().request(method, url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/pbhuyan/Project 6/project-6-stateful-scaling-prithiraj-bhuyan/myenv/lib/python3.12/site-packages/requests/sessions.py"", line 578, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/pbhuyan/Project 6/project-6-stateful-scaling-prithiraj-bhuyan/myenv/lib/python3.12/site-packages/locust/clients.py"", line 258, in prepare_request
+    prep = super().prepare_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/pbhuyan/Project 6/project-6-stateful-scaling-prithiraj-bhuyan/myenv/lib/python3.12/site-packages/requests/sessions.py"", line 487, in prepare_request
+    p.prepare(
+  File ""/home/pbhuyan/Project 6/project-6-stateful-scaling-prithiraj-bhuyan/myenv/lib/python3.12/site-packages/requests/models.py"", line 369, in prepare
+    self.prepare_url(url, params)
+  File ""/home/pbhuyan/Project 6/project-6-stateful-scaling-prithiraj-bhuyan/myenv/lib/python3.12/site-packages/requests/models.py"", line 446, in prepare_url
+    raise InvalidURL(f""Invalid URL {url!r}: No host supplied"")
+",local

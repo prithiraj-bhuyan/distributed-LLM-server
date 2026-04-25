@@ -1,0 +1,80 @@
+Starting Dapr with id llmworker. HTTP Port: 3511. gRPC Port: 38193
+Updating metadata for cliPID: 1567683
+time="2026-01-08T16:50:06.346847683Z" level=info msg="Starting Dapr Runtime -- version 1.16.5 -- commit f167add0ab641afa210d61771820d0d178bc41ae" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.346880784Z" level=info msg="Log level set to: info" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.348357324Z" level=warning msg="mTLS is disabled. Skipping certificate request and tls validation" app_id=llmworker instance=cloud-native scope=dapr.runtime.security type=log ver=1.16.5
+time="2026-01-08T16:50:06.348767835Z" level=info msg="Enabled features: SchedulerReminders" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.348853938Z" level=info msg="metric spec: {\"enabled\":true}" app_id=llmworker instance=cloud-native scope=dapr.runtime.diagnostics type=log ver=1.16.5
+time="2026-01-08T16:50:06.348879438Z" level=info msg="Using default latency distribution buckets: [1 2 3 4 5 6 8 10 13 16 20 25 30 40 50 65 80 100 130 160 200 250 300 400 500 650 800 1000 2000 5000 10000 20000 50000 100000]" app_id=llmworker instance=cloud-native scope=dapr.runtime.diagnostics type=log ver=1.16.5
+time="2026-01-08T16:50:06.349014142Z" level=warning msg="The default value for 'spec.metric.http.increasedCardinality' will change to 'false' in Dapr 1.15 or later" app_id=llmworker instance=cloud-native scope=dapr.runtime.diagnostics type=log ver=1.16.5
+time="2026-01-08T16:50:06.34967076Z" level=info msg="standalone mode configured" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.34968926Z" level=info msg="app id: llmworker" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.349797263Z" level=info msg="metrics server started on 0.0.0.0:41501/" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.349824764Z" level=info msg="Dapr trace sampler initialized: ParentBased{root:AlwaysOnSampler,remoteParentSampled:AlwaysOnSampler,remoteParentNotSampled:AlwaysOffSampler,localParentSampled:AlwaysOnSampler,localParentNotSampled:AlwaysOffSampler}" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.350302077Z" level=info msg="local service entry announced: llmworker -> 10.0.0.4:41797" app_id=llmworker component="nr (mdns/v1)" instance=cloud-native scope=dapr.contrib type=log ver=1.16.5
+time="2026-01-08T16:50:06.350332478Z" level=info msg="Initialized name resolution to mdns" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.350386879Z" level=info msg="Loading components…" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.352484136Z" level=info msg="Connected and received scheduler hosts addresses: [localhost:50006]" app_id=llmworker instance=cloud-native scope=dapr.runtime.scheduler.watchhosts type=log ver=1.16.5
+time="2026-01-08T16:50:06.352663741Z" level=info msg="Scheduler client initialized for address: localhost:50006" app_id=llmworker instance=cloud-native scope=dapr.runtime.scheduler.clients type=log ver=1.16.5
+time="2026-01-08T16:50:06.352677141Z" level=info msg="Scheduler clients initialized" app_id=llmworker instance=cloud-native scope=dapr.runtime.scheduler.clients type=log ver=1.16.5
+time="2026-01-08T16:50:06.3585222Z" level=warning msg="[DEPRECATION NOTICE] The 'host' argument is deprecated. Use 'connectionString' or individual connection arguments instead: https://docs.dapr.io/reference/components-reference/supported-pubsub/setup-rabbitmq/" app_id=llmworker component="pubsub (pubsub.rabbitmq/v1)" instance=cloud-native scope=dapr.contrib type=log ver=1.16.5
+time="2026-01-08T16:50:06.362491308Z" level=info msg="rabbitmq pub/sub: connectionCount: current=0 reference=0" app_id=llmworker component="pubsub (pubsub.rabbitmq/v1)" instance=cloud-native scope=dapr.contrib type=log ver=1.16.5
+time="2026-01-08T16:50:06.370056514Z" level=info msg="rabbitmq pub/sub: connected with connectionCount=1" app_id=llmworker component="pubsub (pubsub.rabbitmq/v1)" instance=cloud-native scope=dapr.contrib type=log ver=1.16.5
+time="2026-01-08T16:50:06.370130616Z" level=info msg="Component loaded: pubsub (pubsub.rabbitmq/v1)" app_id=llmworker instance=cloud-native scope=dapr.runtime.processor type=log ver=1.16.5
+time="2026-01-08T16:50:06.370377922Z" level=info msg="Waiting for all outstanding components to be processed…" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.372454079Z" level=info msg="Using 'statestore' as actor state store" app_id=llmworker instance=cloud-native scope=dapr.runtime.processor.state type=log ver=1.16.5
+time="2026-01-08T16:50:06.37249248Z" level=info msg="Component loaded: statestore (state.redis/v1)" app_id=llmworker instance=cloud-native scope=dapr.runtime.processor type=log ver=1.16.5
+time="2026-01-08T16:50:06.37250748Z" level=info msg="All outstanding components processed" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.37251648Z" level=info msg="Loading endpoints…" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.372794688Z" level=info msg="Waiting for all outstanding http endpoints to be processed…" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.372813088Z" level=info msg="All outstanding http endpoints processed" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.372821789Z" level=info msg="Loading Declarative Subscriptions…" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.3732504Z" level=info msg="gRPC server listening on TCP address: :38193" app_id=llmworker instance=cloud-native scope=dapr.runtime.grpc.api type=log ver=1.16.5
+time="2026-01-08T16:50:06.373271401Z" level=info msg="Enabled gRPC tracing middleware" app_id=llmworker instance=cloud-native scope=dapr.runtime.grpc.api type=log ver=1.16.5
+time="2026-01-08T16:50:06.373278301Z" level=info msg="Enabled gRPC metrics middleware" app_id=llmworker instance=cloud-native scope=dapr.runtime.grpc.api type=log ver=1.16.5
+time="2026-01-08T16:50:06.373347403Z" level=info msg="Registering workflow engine for gRPC endpoint: [::]:38193" app_id=llmworker instance=cloud-native scope=dapr.runtime.grpc.api type=log ver=1.16.5
+time="2026-01-08T16:50:06.373377404Z" level=info msg="API gRPC server is running on port 38193" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.373402804Z" level=warning msg="The default value for 'spec.metric.http.increasedCardinality' will change to 'false' in Dapr 1.15 or later" app_id=llmworker instance=cloud-native scope=dapr.runtime.http type=log ver=1.16.5
+time="2026-01-08T16:50:06.373451606Z" level=info msg="Enabled max body size HTTP middleware with size 4194304 bytes" app_id=llmworker instance=cloud-native scope=dapr.runtime.http type=log ver=1.16.5
+time="2026-01-08T16:50:06.373460606Z" level=info msg="Enabled tracing HTTP middleware" app_id=llmworker instance=cloud-native scope=dapr.runtime.http type=log ver=1.16.5
+time="2026-01-08T16:50:06.373467306Z" level=info msg="Enabled metrics HTTP middleware" app_id=llmworker instance=cloud-native scope=dapr.runtime.http type=log ver=1.16.5
+time="2026-01-08T16:50:06.373752014Z" level=info msg="HTTP server listening on TCP address: :3511" app_id=llmworker instance=cloud-native scope=dapr.runtime.http type=log ver=1.16.5
+time="2026-01-08T16:50:06.373775915Z" level=info msg="HTTP server is running on port 3511" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.373783115Z" level=info msg="The request body size parameter is: 4194304 bytes" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.373811015Z" level=info msg="gRPC server listening on TCP address: :41797" app_id=llmworker instance=cloud-native scope=dapr.runtime.grpc.internal type=log ver=1.16.5
+time="2026-01-08T16:50:06.373821616Z" level=info msg="Enabled gRPC tracing middleware" app_id=llmworker instance=cloud-native scope=dapr.runtime.grpc.internal type=log ver=1.16.5
+time="2026-01-08T16:50:06.373827616Z" level=info msg="Enabled gRPC metrics middleware" app_id=llmworker instance=cloud-native scope=dapr.runtime.grpc.internal type=log ver=1.16.5
+time="2026-01-08T16:50:06.373854917Z" level=info msg="Internal gRPC server is running on :41797" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:06.373863117Z" level=info msg="application protocol: http. waiting on port 8002.  This will block until the app is listening on that port." app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+Updating metadata for app command: poetry run uvicorn worker.worker_simple_st4:app --host 0.0.0.0 --port 8002 --app-dir src
+Updating metadata for appPID: 1567731
+You're up and running! Dapr logs will appear here.
+
+time="2026-01-08T16:50:08.187668426Z" level=info msg="application discovered on port 8002" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:08.187771928Z" level=info msg="Using Scheduler service for reminders." app_id=llmworker instance=cloud-native scope=dapr.runtime.actor.reminders.scheduler type=log ver=1.16.5
+time="2026-01-08T16:50:08.187995434Z" level=info msg="Actor runtime started" app_id=llmworker instance=cloud-native scope=dapr.runtime.actor type=log ver=1.16.5
+time="2026-01-08T16:50:08.188028635Z" level=warning msg="Graceful shutdown timeout is infinite, will wait indefinitely to shutdown" app_id=llmworker instance=cloud-native scope=dapr.runtime.actor type=log ver=1.16.5
+time="2026-01-08T16:50:08.188087037Z" level=info msg="worker started with backend dapr.actors/v1" app_id=llmworker instance=cloud-native scope=dapr.wfengine.durabletask.backend type=log ver=1.16.5
+time="2026-01-08T16:50:08.188115037Z" level=info msg="Workflow engine started" app_id=llmworker instance=cloud-native scope=dapr.runtime.wfengine type=log ver=1.16.5
+time="2026-01-08T16:50:08.189543075Z" level=info msg="Application configuration loaded" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:08.197217576Z" level=info msg="app is subscribed to the following topics: [[messagestocomplete messagestostream]] through pubsub=pubsub" app_id=llmworker instance=cloud-native scope=dapr.runtime.processor.subscription type=log ver=1.16.5
+time="2026-01-08T16:50:08.197257277Z" level=info msg="rabbitmq pub/sub: subscribe to topic/queue 'messagestocomplete/llmworker-messagestocomplete'" app_id=llmworker component="pubsub (pubsub.rabbitmq/v1)" instance=cloud-native scope=dapr.contrib type=log ver=1.16.5
+time="2026-01-08T16:50:08.198048298Z" level=info msg="rabbitmq pub/sub: declaring queue 'llmworker-messagestocomplete'" app_id=llmworker component="pubsub (pubsub.rabbitmq/v1)" instance=cloud-native scope=dapr.contrib type=log ver=1.16.5
+time="2026-01-08T16:50:08.199700341Z" level=info msg="rabbitmq pub/sub: subscribe to topic/queue 'messagestostream/llmworker-messagestostream'" app_id=llmworker component="pubsub (pubsub.rabbitmq/v1)" instance=cloud-native scope=dapr.contrib type=log ver=1.16.5
+time="2026-01-08T16:50:08.200149353Z" level=info msg="rabbitmq pub/sub: declaring queue 'llmworker-messagestostream'" app_id=llmworker component="pubsub (pubsub.rabbitmq/v1)" instance=cloud-native scope=dapr.contrib type=log ver=1.16.5
+time="2026-01-08T16:50:08.201461587Z" level=info msg="dapr initialized. Status: Running. Init Elapsed 1851ms" app_id=llmworker instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T16:50:08.201695393Z" level=info msg="Reporting actor types: []" app_id=llmworker instance=cloud-native scope=dapr.runtime.actors.placement type=log ver=1.16.5
+time="2026-01-08T16:50:08.201927999Z" level=info msg="Scheduler stream connected for [JOB_TARGET_TYPE_JOB]" app_id=llmworker instance=cloud-native scope=dapr.runtime.scheduler.cluster type=log ver=1.16.5
+time="2026-01-08T16:50:08.2019685Z" level=info msg="Connected to placement localhost:50005" app_id=llmworker instance=cloud-native scope=dapr.runtime.actors.placement.client.connector.static type=log ver=1.16.5
+time="2026-01-08T16:50:08.201983901Z" level=info msg="Scheduler stream connected for [JOB_TARGET_TYPE_JOB]" app_id=llmworker instance=cloud-native scope=dapr.runtime.scheduler.cluster type=log ver=1.16.5
+time="2026-01-08T16:50:08.202022202Z" level=info msg="Scheduler stream connected for [JOB_TARGET_TYPE_JOB]" app_id=llmworker instance=cloud-native scope=dapr.runtime.scheduler.cluster type=log ver=1.16.5
+time="2026-01-08T16:50:08.202925325Z" level=info msg="Connected to placement localhost:50005" app_id=llmworker instance=cloud-native scope=dapr.runtime.actors.placement.client type=log ver=1.16.5
+time="2026-01-08T16:50:08.204543268Z" level=info msg="Placement tables updated, version: 0" app_id=llmworker instance=cloud-native scope=dapr.runtime.actors.placement type=log ver=1.16.5
+time="2026-01-08T16:50:08.204948478Z" level=info msg="Running actor reminder migration from state store to scheduler" app_id=llmworker instance=cloud-native scope=dapr.runtime.actors.reminders.migration type=log ver=1.16.5
+time="2026-01-08T16:50:08.204967379Z" level=info msg="Skipping migration, no missing scheduler reminders found" app_id=llmworker instance=cloud-native scope=dapr.runtime.actors.reminders.migration type=log ver=1.16.5
+time="2026-01-08T16:50:08.204977179Z" level=info msg="Found 0 missing scheduler reminders from state store" app_id=llmworker instance=cloud-native scope=dapr.runtime.actors.reminders.migration type=log ver=1.16.5
+time="2026-01-08T16:50:08.204984979Z" level=info msg="Migrated 0 reminders from state store to scheduler successfully" app_id=llmworker instance=cloud-native scope=dapr.runtime.actors.reminders.migration type=log ver=1.16.5
+
+termination signal received: shutting down
+Exited Dapr successfully
+Exited App successfully

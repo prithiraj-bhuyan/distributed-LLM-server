@@ -1,0 +1,13 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: llm-authz
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: generic-app
+  rules:
+    - from:
+        - source:
+            requestPrincipals: ["*"]

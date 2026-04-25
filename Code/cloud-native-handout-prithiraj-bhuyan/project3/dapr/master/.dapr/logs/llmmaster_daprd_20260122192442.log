@@ -1,0 +1,15 @@
+Starting Dapr with id llmmaster. HTTP Port: 3510. gRPC Port: 37125
+Updating metadata for cliPID: 293070
+time="2026-01-22T19:24:42.574327506Z" level=warning msg="mTLS is disabled. Skipping certificate request and tls validation" app_id=llmmaster instance=cloud-native scope=dapr.runtime.security type=log ver=1.16.5
+time="2026-01-22T19:24:42.576960578Z" level=warning msg="The default value for 'spec.metric.http.increasedCardinality' will change to 'false' in Dapr 1.15 or later" app_id=llmmaster instance=cloud-native scope=dapr.runtime.diagnostics type=log ver=1.16.5
+time="2026-01-22T19:24:42.587101155Z" level=warning msg="[DEPRECATION NOTICE] The 'host' argument is deprecated. Use 'connectionString' or individual connection arguments instead: https://docs.dapr.io/reference/components-reference/supported-pubsub/setup-rabbitmq/" app_id=llmmaster component="pubsub (pubsub.rabbitmq/v1)" instance=cloud-native scope=dapr.contrib type=log ver=1.16.5
+time="2026-01-22T19:24:42.616929971Z" level=warning msg="The default value for 'spec.metric.http.increasedCardinality' will change to 'false' in Dapr 1.15 or later" app_id=llmmaster instance=cloud-native scope=dapr.runtime.http type=log ver=1.16.5
+Updating metadata for app command: poetry run uvicorn master.master_st4:app --host 0.0.0.0 --port 8001 --app-dir src
+Updating metadata for appPID: 293134
+You're up and running! Dapr logs will appear here.
+
+time="2026-01-22T19:24:44.228958865Z" level=warning msg="Graceful shutdown timeout is infinite, will wait indefinitely to shutdown" app_id=llmmaster instance=cloud-native scope=dapr.runtime.actor type=log ver=1.16.5
+
+termination signal received: shutting down
+Exited Dapr successfully
+Exited App successfully

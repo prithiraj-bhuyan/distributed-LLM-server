@@ -1,0 +1,20 @@
+== APP - llmmaster == INFO:     Started server process [1637978]
+== APP - llmmaster == INFO:     Waiting for application startup.
+== APP - llmmaster == INFO:     Application startup complete.
+== APP - llmmaster == INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+== APP - llmmaster == INFO:     127.0.0.1:36306 - "GET /dapr/config HTTP/1.1" 404 Not Found
+== APP - llmmaster == INFO:     127.0.0.1:36306 - "GET /dapr/subscribe HTTP/1.1" 200 OK
+== APP - llmmaster == INFO:     127.0.0.1:51276 - "GET /api?message=task4_comp_test&completion_type=completion HTTP/1.1" 200 OK
+== APP - llmmaster == INFO:     127.0.0.1:40858 - "GET /api?message=task4_comp_test&completion_type=completion HTTP/1.1" 200 OK
+== APP - llmmaster == INFO:     127.0.0.1:40858 - "GET /api?message=task4_stream_test&completion_type=streaming HTTP/1.1" 200 OK
+== APP - llmmaster == INFO:     127.0.0.1:40858 - "GET /api?message=task4_stream_test&completion_type=streaming HTTP/1.1" 200 OK
+== APP - llmmaster == INFO:     127.0.0.1:32846 - "GET /api?message=task4_comp_test&completion_type=completion HTTP/1.1" 200 OK
+== APP - llmmaster == INFO:     127.0.0.1:32858 - "GET /api?message=task4_comp_test&completion_type=completion HTTP/1.1" 200 OK
+== APP - llmmaster == INFO:     127.0.0.1:32858 - "GET /api?message=task4_stream_test&completion_type=streaming HTTP/1.1" 200 OK
+== APP - llmmaster == INFO:     127.0.0.1:32858 - "GET /api?message=task4_stream_test&completion_type=streaming HTTP/1.1" 200 OK
+== APP - llmmaster == INFO:     127.0.0.1:39882 - "GET /api?message=task4_comp_test&completion_type=completion HTTP/1.1" 200 OK
+== APP - llmmaster == INFO:     127.0.0.1:39886 - "GET /api?message=task4_comp_test&completion_type=completion HTTP/1.1" 200 OK
+== APP - llmmaster == INFO:     127.0.0.1:39886 - "GET /api?message=task4_stream_test&completion_type=streaming HTTP/1.1" 200 OK
+== APP - llmmaster == INFO:     127.0.0.1:39886 - "GET /api?message=task4_stream_test&completion_type=streaming HTTP/1.1" 200 OK
+
+termination signal received: shutting down

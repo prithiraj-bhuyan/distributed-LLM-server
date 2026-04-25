@@ -1,0 +1,46 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: run-tests
+  namespace: default
+  labels:
+    app.kubernetes.io/version: "0.1"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.12.1"
+    tekton.dev/categories: Testing
+    tekton.dev/tags: CLI, testing
+    tekton.dev/displayName: "run-tests"
+    tekton.dev/platforms: "linux/amd64,linux/arm64,linux/ppc64le,linux/390x"
+spec:
+  description: >-
+    A simple task that allows for easy testing of both repositories
+  workspaces:
+    - name: source
+  steps:
+    - name: build-wheel
+      image: python:3.12-alpine
+      workingDir: $(workspaces.source.path)/llm_server
+      script: |
+        pip install poetry
+        poetry build --clean --format wheel
+    - name: download-model
+      image: alpine
+      workingDir: $(workspaces.source.path)/llm_server
+      script: |
+        set -euxo pipefail
+        wget https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q2_K.gguf
+    - name: run-fastapi-tests
+      image: python:3.12
+      workingDir: $(workspaces.source.path)/llm_server
+      script: |
+        set -euxo pipefail
+        pip install poetry
+        poetry install
+        poetry run pytest
+    - name: run-django-tests
+      image: python:3.12
+      workingDir: $(workspaces.source.path)/django-authentication
+      script: |
+        set -euxo pipefail
+        pip install -r requirements.txt
+        python manage.py test

@@ -1,0 +1,67 @@
+Starting Dapr with id llmmaster. HTTP Port: 3510. gRPC Port: 38433
+Updating metadata for cliPID: 1267100
+time="2026-01-08T02:15:22.495851728Z" level=info msg="Starting Dapr Runtime -- version 1.16.5 -- commit f167add0ab641afa210d61771820d0d178bc41ae" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.495885429Z" level=info msg="Log level set to: info" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.496369043Z" level=warning msg="mTLS is disabled. Skipping certificate request and tls validation" app_id=llmmaster instance=cloud-native scope=dapr.runtime.security type=log ver=1.16.5
+time="2026-01-08T02:15:22.496880259Z" level=info msg="Enabled features: SchedulerReminders" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.496971962Z" level=info msg="metric spec: {\"enabled\":true}" app_id=llmmaster instance=cloud-native scope=dapr.runtime.diagnostics type=log ver=1.16.5
+time="2026-01-08T02:15:22.496998163Z" level=info msg="Using default latency distribution buckets: [1 2 3 4 5 6 8 10 13 16 20 25 30 40 50 65 80 100 130 160 200 250 300 400 500 650 800 1000 2000 5000 10000 20000 50000 100000]" app_id=llmmaster instance=cloud-native scope=dapr.runtime.diagnostics type=log ver=1.16.5
+time="2026-01-08T02:15:22.497111966Z" level=warning msg="The default value for 'spec.metric.http.increasedCardinality' will change to 'false' in Dapr 1.15 or later" app_id=llmmaster instance=cloud-native scope=dapr.runtime.diagnostics type=log ver=1.16.5
+time="2026-01-08T02:15:22.497740085Z" level=info msg="standalone mode configured" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.497757586Z" level=info msg="app id: llmmaster" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.497872589Z" level=info msg="Dapr trace sampler initialized: ParentBased{root:AlwaysOnSampler,remoteParentSampled:AlwaysOnSampler,remoteParentNotSampled:AlwaysOffSampler,localParentSampled:AlwaysOnSampler,localParentNotSampled:AlwaysOffSampler}" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.498012593Z" level=info msg="metrics server started on 0.0.0.0:33563/" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.498455407Z" level=info msg="local service entry announced: llmmaster -> 10.0.0.4:35713" app_id=llmmaster component="nr (mdns/v1)" instance=cloud-native scope=dapr.contrib type=log ver=1.16.5
+time="2026-01-08T02:15:22.498477108Z" level=info msg="Initialized name resolution to mdns" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.498531109Z" level=info msg="Loading components…" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.499248931Z" level=warning msg="[DEPRECATION NOTICE] The 'host' argument is deprecated. Use 'connectionString' or individual connection arguments instead: https://docs.dapr.io/reference/components-reference/supported-pubsub/setup-rabbitmq/" app_id=llmmaster component="pubsub (pubsub.rabbitmq/v1)" instance=cloud-native scope=dapr.contrib type=log ver=1.16.5
+time="2026-01-08T02:15:22.499375135Z" level=info msg="rabbitmq pub/sub: connectionCount: current=0 reference=0" app_id=llmmaster component="pubsub (pubsub.rabbitmq/v1)" instance=cloud-native scope=dapr.contrib type=log ver=1.16.5
+time="2026-01-08T02:15:22.50707947Z" level=info msg="rabbitmq pub/sub: connected with connectionCount=1" app_id=llmmaster component="pubsub (pubsub.rabbitmq/v1)" instance=cloud-native scope=dapr.contrib type=log ver=1.16.5
+time="2026-01-08T02:15:22.507920796Z" level=info msg="Connected and received scheduler hosts addresses: [localhost:50006]" app_id=llmmaster instance=cloud-native scope=dapr.runtime.scheduler.watchhosts type=log ver=1.16.5
+time="2026-01-08T02:15:22.508307808Z" level=info msg="Component loaded: pubsub (pubsub.rabbitmq/v1)" app_id=llmmaster instance=cloud-native scope=dapr.runtime.processor type=log ver=1.16.5
+time="2026-01-08T02:15:22.508611117Z" level=info msg="Scheduler client initialized for address: localhost:50006" app_id=llmmaster instance=cloud-native scope=dapr.runtime.scheduler.clients type=log ver=1.16.5
+time="2026-01-08T02:15:22.508633218Z" level=info msg="Scheduler clients initialized" app_id=llmmaster instance=cloud-native scope=dapr.runtime.scheduler.clients type=log ver=1.16.5
+time="2026-01-08T02:15:22.509261137Z" level=info msg="Waiting for all outstanding components to be processed…" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.512673841Z" level=info msg="Using 'statestore' as actor state store" app_id=llmmaster instance=cloud-native scope=dapr.runtime.processor.state type=log ver=1.16.5
+time="2026-01-08T02:15:22.513852177Z" level=info msg="Component loaded: statestore (state.redis/v1)" app_id=llmmaster instance=cloud-native scope=dapr.runtime.processor type=log ver=1.16.5
+time="2026-01-08T02:15:22.514039483Z" level=info msg="All outstanding components processed" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.514391294Z" level=info msg="Loading endpoints…" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.514836907Z" level=info msg="Waiting for all outstanding http endpoints to be processed…" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.515492227Z" level=info msg="All outstanding http endpoints processed" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.515855438Z" level=info msg="Loading Declarative Subscriptions…" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.517011674Z" level=info msg="gRPC server listening on TCP address: :38433" app_id=llmmaster instance=cloud-native scope=dapr.runtime.grpc.api type=log ver=1.16.5
+time="2026-01-08T02:15:22.517036675Z" level=info msg="Enabled gRPC tracing middleware" app_id=llmmaster instance=cloud-native scope=dapr.runtime.grpc.api type=log ver=1.16.5
+time="2026-01-08T02:15:22.517043975Z" level=info msg="Enabled gRPC metrics middleware" app_id=llmmaster instance=cloud-native scope=dapr.runtime.grpc.api type=log ver=1.16.5
+time="2026-01-08T02:15:22.517109477Z" level=info msg="Registering workflow engine for gRPC endpoint: [::]:38433" app_id=llmmaster instance=cloud-native scope=dapr.runtime.grpc.api type=log ver=1.16.5
+time="2026-01-08T02:15:22.517142378Z" level=info msg="API gRPC server is running on port 38433" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.517168979Z" level=warning msg="The default value for 'spec.metric.http.increasedCardinality' will change to 'false' in Dapr 1.15 or later" app_id=llmmaster instance=cloud-native scope=dapr.runtime.http type=log ver=1.16.5
+time="2026-01-08T02:15:22.51721388Z" level=info msg="Enabled max body size HTTP middleware with size 4194304 bytes" app_id=llmmaster instance=cloud-native scope=dapr.runtime.http type=log ver=1.16.5
+time="2026-01-08T02:15:22.51722298Z" level=info msg="Enabled tracing HTTP middleware" app_id=llmmaster instance=cloud-native scope=dapr.runtime.http type=log ver=1.16.5
+time="2026-01-08T02:15:22.51723048Z" level=info msg="Enabled metrics HTTP middleware" app_id=llmmaster instance=cloud-native scope=dapr.runtime.http type=log ver=1.16.5
+time="2026-01-08T02:15:22.517506289Z" level=info msg="HTTP server listening on TCP address: :3510" app_id=llmmaster instance=cloud-native scope=dapr.runtime.http type=log ver=1.16.5
+time="2026-01-08T02:15:22.51754389Z" level=info msg="HTTP server is running on port 3510" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.521210402Z" level=info msg="The request body size parameter is: 4194304 bytes" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.521273404Z" level=info msg="gRPC server listening on TCP address: :35713" app_id=llmmaster instance=cloud-native scope=dapr.runtime.grpc.internal type=log ver=1.16.5
+time="2026-01-08T02:15:22.521287904Z" level=info msg="Enabled gRPC tracing middleware" app_id=llmmaster instance=cloud-native scope=dapr.runtime.grpc.internal type=log ver=1.16.5
+time="2026-01-08T02:15:22.521294805Z" level=info msg="Enabled gRPC metrics middleware" app_id=llmmaster instance=cloud-native scope=dapr.runtime.grpc.internal type=log ver=1.16.5
+time="2026-01-08T02:15:22.521342306Z" level=info msg="Internal gRPC server is running on :35713" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:22.521351106Z" level=info msg="application protocol: http. waiting on port 8001.  This will block until the app is listening on that port." app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+Updating metadata for app command: poetry run uvicorn master.master_st4:app --host 0.0.0.0 --port 8001
+Updating metadata for appPID: 1267116
+You're up and running! Dapr logs will appear here.
+
+time="2026-01-08T02:15:32.580686691Z" level=info msg="waiting for application to listen on port 8001" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:42.637088036Z" level=info msg="waiting for application to listen on port 8001" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:15:52.692440566Z" level=info msg="waiting for application to listen on port 8001" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:16:02.749428232Z" level=info msg="waiting for application to listen on port 8001" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:16:12.805779213Z" level=info msg="waiting for application to listen on port 8001" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:16:22.859974592Z" level=info msg="waiting for application to listen on port 8001" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:16:32.914179342Z" level=info msg="waiting for application to listen on port 8001" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:16:42.967904322Z" level=info msg="waiting for application to listen on port 8001" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:16:53.021022838Z" level=info msg="waiting for application to listen on port 8001" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:17:03.072277668Z" level=info msg="waiting for application to listen on port 8001" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:17:13.127765464Z" level=info msg="waiting for application to listen on port 8001" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+time="2026-01-08T02:17:23.182023026Z" level=info msg="waiting for application to listen on port 8001" app_id=llmmaster instance=cloud-native scope=dapr.runtime type=log ver=1.16.5
+
+termination signal received: shutting down
+Exited Dapr successfully

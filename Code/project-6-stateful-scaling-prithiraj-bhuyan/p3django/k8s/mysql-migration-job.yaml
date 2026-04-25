@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mysql-migration
+spec:
+  template:
+    spec:
+      containers:
+      - name: mysql-db-creator
+        image: mysql:8.0
+        command:
+        - bash
+        - "-c"
+        - |
+          mysql -h mysql-0.mysql -u root -prootpassword -e "CREATE DATABASE IF NOT EXISTS login CHARACTER SET utf8;"
+      restartPolicy: Never
+  backoffLimit: 4

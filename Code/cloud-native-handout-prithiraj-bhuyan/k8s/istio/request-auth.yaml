@@ -1,0 +1,12 @@
+apiVersion: security.istio.io/v1
+kind: RequestAuthentication
+metadata:
+  name: llm-auth
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: generic-app
+  jwtRules:
+    - issuer: "llmlogin"
+      jwks: '{"keys":[{"kty":"RSA","key_ops":["verify"],"n":"sBNq9fudqmxG6crV6kxAZSHYomQ4rf7Tq8ZhINaW8cq7Nc_3wLozzcPN2DzJwPRXJ6WHdi5DgnIYdFYD4_tlVFzoBlGOxfMXV2twCXSrX4qIVOqihDeN2dIw-4NhtQ9SddUuYkst8A33e-Qv6sLDeThFYuIKDq0nKtEfB7U8UB6C1o9ZNX1fH0EaZXRzf9hlhaTZFwQI1ujIJlFCMmdNuXmzWlk3PpleJ2iotNU-G6zLNm6XrrIjYV9KKibvR2kxwEwlYUfHWdZTUNzs0crhM-EnxAid_niaVhvTv63exv24HSsnwubRkUBUcrSW1cFQ448YT_TDID9paVnLz_j9WQ","e":"AQAB","kid":"mycoolkid","use":"sig","alg":"RS256"}]}'

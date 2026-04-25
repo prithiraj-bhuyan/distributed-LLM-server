@@ -1,0 +1,5 @@
+== APP - llmworker == ERROR:    Error loading ASGI app. Could not import module "worker.worker_simple_st4".
+The App process exited with error code: exit status 1
+
+termination signal received: shutting down
+Error exiting App: exit status 1

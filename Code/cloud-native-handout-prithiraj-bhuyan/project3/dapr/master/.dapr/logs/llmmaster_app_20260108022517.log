@@ -1,0 +1,8 @@
+== APP - llmmaster == INFO:     Started server process [1273017]
+== APP - llmmaster == INFO:     Waiting for application startup.
+== APP - llmmaster == INFO:     Application startup complete.
+== APP - llmmaster == INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+== APP - llmmaster == INFO:     127.0.0.1:48584 - "GET /dapr/config HTTP/1.1" 404 Not Found
+== APP - llmmaster == INFO:     127.0.0.1:48584 - "GET /dapr/subscribe HTTP/1.1" 200 OK
+
+termination signal received: shutting down

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: login
+  template:
+    metadata:
+      labels:
+        app: login
+    spec:
+      containers:
+      - name: login-container
+        image: cloudnativeacr.azurecr.io/django-auth:1772751174-f59e15db948ed34a850836aa16aa855d063354ab # {"$imagepolicy": "flux-system:loginimagepol"}
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PRIVATE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: loginkeys
+              key: private_key.pem
+        - name: PUBLIC_KEY
+          valueFrom:
+            secretKeyRef:
+              name: loginkeys
+              key: public_key.pem

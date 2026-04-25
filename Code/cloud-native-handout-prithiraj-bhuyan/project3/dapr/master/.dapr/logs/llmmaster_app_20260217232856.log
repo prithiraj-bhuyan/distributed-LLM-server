@@ -1,0 +1,9 @@
+== APP - llmmaster == INFO:     Started server process [82965]
+== APP - llmmaster == INFO:     Waiting for application startup.
+== APP - llmmaster == INFO:     Application startup complete.
+== APP - llmmaster == INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+== APP - llmmaster == INFO:     Shutting down
+== APP - llmmaster == INFO:     Waiting for application shutdown.
+== APP - llmmaster == INFO:     Application shutdown complete.
+== APP - llmmaster == INFO:     Finished server process [82965]
+Exited App successfully

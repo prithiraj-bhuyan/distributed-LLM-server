@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login
+  labels:
+    app: login
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: login
+  template:
+    metadata:
+      labels:
+        app: login
+    spec:
+      initContainers:
+      - name: logininit
+        image: cloudnativeacr2.azurecr.io/login:latest
+        command: ["/bin/sh", "-c"]
+        args: ["python manage.py migrate && python manage.py createsuperuser --no-input --username admin --email testme@test.com || true"]
+        env:
+        - name: DJANGO_SUPERUSER_PASSWORD
+          value: "asdasd"
+        - name: PRIVATE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: loginkeys
+              key: private_key.pem
+        - name: PUBLIC_KEY
+          valueFrom:
+            secretKeyRef:
+              name: loginkeys
+              key: public_key.pem
+      containers:
+      - name: login
+        image: cloudnativeacr2.azurecr.io/login:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PRIVATE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: loginkeys
+              key: private_key.pem
+        - name: PUBLIC_KEY
+          valueFrom:
+            secretKeyRef:
+              name: loginkeys
+              key: public_key.pem
+        resources:
+          requests:
+            cpu: 250m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        startupProbe:
+          httpGet:
+            path: /healthcheck
+            port: 8080
+          failureThreshold: 5
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 8080
+          failureThreshold: 1
+          periodSeconds: 3

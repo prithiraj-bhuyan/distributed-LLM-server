@@ -1,0 +1,71 @@
+{
+  "$schema": "https://www.krakend.io/schema/krakend.json",
+  "version": 3,
+  "name": "KrakenD - API Gateway",
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "host": [
+    "http://loginservice"
+  ],
+  "output_encoding": "json",
+  "debug_endpoint": true,
+  "endpoints": [
+    {
+      "endpoint": "/v1/llm",
+      "method": "GET",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/api",
+          "encoding": "json",
+          "sd": "static",
+          "method": "GET",
+          "disable_host_sanitize": false,
+          "host": [
+            "http://llmapp-service:80"
+          ]
+        }
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "disable_jwk_security": true,
+          "operation_debug": true,
+          "jwk_local_path": "/etc/krakensecrets/publickey.json"
+        },
+        "qos/ratelimit/router": {
+          "max_rate": 0,
+          "client_max_rate": 0,
+          "strategy": "ip",
+          "capacity": 1,
+          "every": "0m",
+          "client_capacity": 0
+        }
+      },
+      "input_query_strings": [
+        "message"
+      ],
+      "timeout": "300s",
+      "cache_ttl": "100s"
+    },
+    {
+      "endpoint": "/v1/logintoken",
+      "method": "POST",
+      "output_encoding": "json",
+      "input_headers": [
+        "*"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/token/",
+          "method": "POST",
+          "encoding": "json",
+          "sd": "static",
+          "host": [
+            "http://loginservice"
+          ]
+        }
+      ]
+    }
+  ]
+}
